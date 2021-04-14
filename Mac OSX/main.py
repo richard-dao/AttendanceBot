@@ -12,8 +12,7 @@ period5 = "https://auhsdschools.zoom.us/j/87122384475"
 period6 = "https://auhsdschools.zoom.us/j/81886568339?pwd=UCtWL0NsVE9BOWhzSGVqMndhanBpdz09"
 period7 = "https://auhsdschools.zoom.us/j/84243151244?pwd=UG9CcWU5QTZmcm9TR2ZRWElhK0NXQT09"
 cohort = "https://auhsdschools.zoom.us/j/87594112356?pwd=UUE3REtuRG0xdVFodUN1UGZNQmpBZz09"
-pathToZoom = '/Applications/zoom.us.app' # If Mac OSX, configure 
-closeCMD = "['osascript', '-e', 'tell application \"zoom.us\" to quit']"
+pathToZoom = '/Applications/zoom.us.app' # Configure Path to Zoom Application
 # --------------------------------------------------------------------------------------------------------------- #
 
 # First Calls
@@ -28,7 +27,7 @@ def cohort():
     print("Cohort")
     t_x = datetime.today()
     print(t_x)
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     endDaySeconds = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0)
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
@@ -37,7 +36,7 @@ def cohort():
     y.start()  
 
 def period1():
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     t_x = datetime.today()
     print(date.today())
     if (date.today().weekday() == 0): # If Monday
@@ -71,7 +70,7 @@ def pass1():
     print("Pass 1")
     t_x = datetime.today()
     os.system("pkill zoom.us")
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     pass1Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0)
     pass1Seconds = pass1Seconds - t_x
     pass1Seconds = pass1Seconds.total_seconds()
@@ -95,7 +94,7 @@ def pass2():
     print("Pass 2")
     t_x = datetime.today()
     os.system("pkill zoom.us")
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     pass2Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0)
     pass2Seconds = pass2Seconds - t_x
     pass2Seconds = pass2Seconds.total_seconds()
@@ -119,7 +118,7 @@ def pass3():
     print("Pass 3")
     t_x = datetime.today()
     os.system("pkill zoom.us")
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     pass3Seconds = t_0.replace(day=t_0.day, hour=14, minute=5, second=0, microsecond=0)
     pass3Seconds = pass3Seconds - t_x
     pass3Seconds = pass3Seconds.total_seconds()
@@ -143,7 +142,7 @@ def pass4():
     print("Pass 4")
     t_x = datetime.today()
     os.system("pkill zoom.us")
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     pass4Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0)
     pass4Seconds = pass4Seconds - t_x
     pass4Seconds = pass4Seconds.total_seconds()
@@ -167,7 +166,7 @@ def pass5():
     print("Pass 5")
     t_x = datetime.today()
     os.system("pkill zoom.us")
-    subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+    subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
     pass5Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0)
     pass5Seconds = pass5Seconds - t_x
     pass5Seconds = pass5Seconds.total_seconds()
@@ -213,4 +212,4 @@ def endDay():
 
 t = Timer(seconds, period1)
 t.start()
-subprocess.call(["/usr/bin/open", "-n", "-a", "/Applications/zoom.us.app"])
+subprocess.call(["/usr/bin/open", "-n", "-a", pathToZoom])
