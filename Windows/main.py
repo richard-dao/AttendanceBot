@@ -66,7 +66,7 @@ def period1():
         period4()
 
 def pass1():
-    print("Pass 1")
+    print("Brunch")
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
@@ -91,13 +91,14 @@ def period2():
     x.start()
 
 def pass2():
-    print("Pass 2")
+    print("Lunch")
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
     pass2Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0) # Period 3 Starts
     pass2Seconds = pass2Seconds - t_x
     pass2Seconds = pass2Seconds.total_seconds()
+    print(pass2Seconds)
     y = Timer(pass2Seconds, period3)
     y.start()
 
@@ -115,7 +116,7 @@ def period3():
     x.start()
 
 def pass3():
-    print("Pass 3")
+    print("Passing Period Between Periods 3 and 7")
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
@@ -139,7 +140,7 @@ def period4():
     x.start()
 
 def pass4():
-    print("Pass 4")
+    print("Brunch")
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
@@ -163,7 +164,7 @@ def period5():
     x.start()
 
 def pass5():
-    print("Pass 5")
+    print("Lunch")
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
