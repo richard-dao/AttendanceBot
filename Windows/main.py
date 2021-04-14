@@ -1,4 +1,3 @@
-import webbrowser
 import subprocess
 import schedule
 from datetime import datetime, timedelta, date
@@ -17,7 +16,7 @@ pathToZoom = 'C:\\Users\\rdao2\\AppData\\Roaming\\Zoom\\bin\\Zoom.exe' # If Mac 
 
 # First Calls
 t_x = datetime.today()
-t_0 = t_x.replace(day=t_x.day, hour=8, minute=30, second=0, microsecond=0) + timedelta(days=0)
+t_0 = t_x.replace(day=t_x.day, hour=8, minute=30, second=0, microsecond=0) + timedelta(days=0) # School Start Time
 deltaT = t_0 - t_x
 seconds = deltaT.total_seconds()
 
@@ -31,7 +30,7 @@ def cohort():
     endDaySeconds = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0)
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
-    webbrowser.open(cohort)
+    subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", cohortLink]))
     y = Timer(endDaySeconds, endDay)
     y.start()  
 
@@ -41,7 +40,7 @@ def period1():
     print(date.today())
     if (date.today().weekday() == 0): # If Monday
         print("Monday")
-        seconds1 = t_0.replace(day=t_0.day, hour=9, minute=0, second=0, microsecond=0)
+        seconds1 = t_0.replace(day=t_0.day, hour=9, minute=0, second=0, microsecond=0) # Cohort Starts
         seconds1 = seconds1 - t_x
         seconds1 = seconds1.total_seconds()
         if (seconds1 < 0):
@@ -52,14 +51,14 @@ def period1():
             x.start()
     elif (date.today().weekday() == 1 or date.today().weekday() == 2): # If Tuesday or Wednesday do 1-2-3-7, # Else do 4-5-6
         print("Tuesday/Wednesday")
-        seconds1 = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0)
+        seconds1 = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0) # Period 1 Ends
         seconds1 = seconds1 - t_x
         seconds1 = seconds1.total_seconds()
         if (seconds1 < 0):
             print("Period 1 Already Over!")
         else:
             print("Period 1")
-            webbrowser.open(period1Link) # Period 1 Zoom Link
+            subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period1Link])) # Period 1 Zoom Link
         x = Timer(seconds1, pass1)
         x.start()
     else:
@@ -71,7 +70,7 @@ def pass1():
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
-    pass1Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0)
+    pass1Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0) # Period 2 Starts
     pass1Seconds = pass1Seconds - t_x
     pass1Seconds = pass1Seconds.total_seconds()
     y = Timer(pass1Seconds, period2)
@@ -79,14 +78,15 @@ def pass1():
 
 def period2():
     t_x = datetime.today()
-    seconds2 = t_0.replace(day=t_0.day, hour=11, minute=20, second=0, microsecond=0)
+    seconds2 = t_0.replace(day=t_0.day, hour=11, minute=20, second=0, microsecond=0) # Period 2 Ends
     seconds2 = seconds2 - t_x
     seconds2 = seconds2.total_seconds()
+    print(seconds2)
     if (seconds2 < 0):
         print("Period 2 Already Over!")
     else:
         print("Period 2")
-        webbrowser.open(period2Link) # Period 2 Zoom Link - REQUIRES PASSWORD
+        subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period2Link]))
     x = Timer(seconds2, pass2)
     x.start()
 
@@ -95,7 +95,7 @@ def pass2():
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
-    pass2Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0)
+    pass2Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0) # Period 3 Starts
     pass2Seconds = pass2Seconds - t_x
     pass2Seconds = pass2Seconds.total_seconds()
     y = Timer(pass2Seconds, period3)
@@ -103,14 +103,14 @@ def pass2():
 
 def period3():
     t_x = datetime.today()
-    seconds3 = t_0.replace(day=t_0.day, hour=13, minute=55, second=0, microsecond=0)
+    seconds3 = t_0.replace(day=t_0.day, hour=13, minute=55, second=0, microsecond=0) # Period 3 Ends
     seconds3 = seconds3 - t_x
     seconds3 = seconds3.total_seconds()
     if (seconds3 < 0):
         print("Period 3 Already Over!")
     else:
         print("Period 3")
-        webbrowser.open(period3Link) # Period 3 Zoom Link
+        subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period3Link]))
     x = Timer(seconds3, pass3)
     x.start()
 
@@ -119,7 +119,7 @@ def pass3():
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
-    pass3Seconds = t_0.replace(day=t_0.day, hour=14, minute=5, second=0, microsecond=0)
+    pass3Seconds = t_0.replace(day=t_0.day, hour=14, minute=5, second=0, microsecond=0) # Period 7 Starts
     pass3Seconds = pass3Seconds - t_x
     pass3Seconds = pass3Seconds.total_seconds()
     y = Timer(pass3Seconds, period7)
@@ -128,13 +128,13 @@ def pass3():
 def period4():
     print("Period 4")
     t_x = datetime.today()
-    seconds4 = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0)
+    seconds4 = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0) # Period 4 Ends
     seconds4 = seconds4 - t_x
     seconds4= seconds4.total_seconds()
     if (seconds4 < 0):
         print("Period 4 Already Over!")
     else:
-        webbrowser.open(period4Link)
+        subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period4Link]))
     x = Timer(seconds4, pass4)
     x.start()
 
@@ -143,7 +143,7 @@ def pass4():
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
-    pass4Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0)
+    pass4Seconds = t_0.replace(day=t_0.day, hour=10, minute=5, second=0, microsecond=0) # Period 5 Starts
     pass4Seconds = pass4Seconds - t_x
     pass4Seconds = pass4Seconds.total_seconds()
     y = Timer(pass4Seconds, period5)
@@ -152,13 +152,13 @@ def pass4():
 def period5():
     print("Period 5")
     t_x = datetime.today()
-    seconds5 = t_0.replace(day=t_0.day, hour=11, minute=20, second=0, microsecond=0)
+    seconds5 = t_0.replace(day=t_0.day, hour=11, minute=20, second=0, microsecond=0) # Period 5 Ends
     seconds5 = seconds5 - t_x
     seconds5 = seconds5.total_seconds()
     if (seconds5 < 0):
         print("Period 5 Already Over!")
     else:
-        webbrowser.open(period5Link)
+        subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period5Link]))
     x = Timer(seconds5, pass5)
     x.start()
 
@@ -167,7 +167,7 @@ def pass5():
     t_x = datetime.today()
     subprocess.call(["taskkill", "/F", "/IM", "zoom.exe"])
     subprocess.Popen(pathToZoom)
-    pass5Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0)
+    pass5Seconds = t_0.replace(day=t_0.day, hour=12, minute=40, second=0, microsecond=0) # Period 6 Starts
     pass5Seconds = pass5Seconds - t_x
     pass5Seconds = pass5Seconds.total_seconds()
     y = Timer(pass5Seconds, period6)
@@ -176,8 +176,8 @@ def pass5():
 def period6():
     print("Period 6")
     t_x = datetime.today()
-    webbrowser.open(period6Link) # Passcode Required
-    endDaySeconds = t_0.replace(day=t_0.day, hour=13, minute=55, second=0, microsecond=0)
+    subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period6Link]))
+    endDaySeconds = t_0.replace(day=t_0.day, hour=13, minute=55, second=0, microsecond=0) # Period 6 Ends
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
     y = Timer(endDaySeconds, endDay)
@@ -185,7 +185,7 @@ def period6():
 
 def period7():
     t_x = datetime.today()
-    endDaySeconds = t_0.replace(day=t_0.day, hour=15, minute=20, second=0, microsecond=0)
+    endDaySeconds = t_0.replace(day=t_0.day, hour=15, minute=20, second=0, microsecond=0) # Period 7 Ends
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
     if (endDaySeconds < 0):
@@ -194,7 +194,7 @@ def period7():
         y.start()
     else:
         print("Period 7")
-        webbrowser.open(period7Link)
+        subprocess.Popen((["C:\Program Files\Google\Chrome\Application\chrome.exe", "-incognito", period7Link]))
         y = Timer(endDaySeconds, endDay)
         y.start()
 
