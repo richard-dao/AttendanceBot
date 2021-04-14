@@ -4,14 +4,14 @@ import os
 from datetime import datetime, timedelta, date
 from threading import Timer
 # --------------------------------------------------------------------------------------------------------------- #
-period1 = "https://auhsdschools.zoom.us/j/81570374074"
-period2 = "https://auhsdschools.zoom.us/j/83717749766?pwd=cm8wNUdocU9neFpXM28rakxxY0R4QT09"
-period3 = "https://auhsdschools.zoom.us/j/85367548947"
-period4 = "https://auhsdschools.zoom.us/j/83100141993"
-period5 = "https://auhsdschools.zoom.us/j/87122384475"
-period6 = "https://auhsdschools.zoom.us/j/81886568339?pwd=UCtWL0NsVE9BOWhzSGVqMndhanBpdz09"
-period7 = "https://auhsdschools.zoom.us/j/84243151244?pwd=UG9CcWU5QTZmcm9TR2ZRWElhK0NXQT09"
-cohort = "https://auhsdschools.zoom.us/j/87594112356?pwd=UUE3REtuRG0xdVFodUN1UGZNQmpBZz09"
+period1Link = "https://auhsdschools.zoom.us/j/81570374074"
+period2Link = "https://auhsdschools.zoom.us/j/83717749766?pwd=cm8wNUdocU9neFpXM28rakxxY0R4QT09"
+period3Link = "https://auhsdschools.zoom.us/j/85367548947"
+period4Link = "https://auhsdschools.zoom.us/j/83100141993"
+period5Link = "https://auhsdschools.zoom.us/j/87122384475"
+period6Link = "https://auhsdschools.zoom.us/j/81886568339?pwd=UCtWL0NsVE9BOWhzSGVqMndhanBpdz09"
+period7Link = "https://auhsdschools.zoom.us/j/84243151244?pwd=UG9CcWU5QTZmcm9TR2ZRWElhK0NXQT09"
+cohortLink = "https://auhsdschools.zoom.us/j/87594112356?pwd=UUE3REtuRG0xdVFodUN1UGZNQmpBZz09"
 pathToZoom = '/Applications/zoom.us.app' # Configure Path to Zoom Application
 # --------------------------------------------------------------------------------------------------------------- #
 
@@ -31,7 +31,7 @@ def cohort():
     endDaySeconds = t_0.replace(day=t_0.day, hour=9, minute=45, second=0, microsecond=0)
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
-    webbrowser.open(cohort)
+    webbrowser.open(cohortLink)
     y = Timer(endDaySeconds, endDay)
     y.start()  
 
@@ -59,7 +59,7 @@ def period1():
             print("Period 1 Already Over!")
         else:
             print("Period 1")
-            webbrowser.open(period1) # Period 1 Zoom Link
+            webbrowser.open(period1Link) # Period 1 Zoom Link
         x = Timer(seconds1, pass1)
         x.start()
     else:
@@ -86,7 +86,7 @@ def period2():
         print("Period 2 Already Over!")
     else:
         print("Period 2")
-        webbrowser.open(period2) # Period 2 Zoom Link - REQUIRES PASSWORD
+        webbrowser.open(period2Link) # Period 2 Zoom Link - REQUIRES PASSWORD
     x = Timer(seconds2, pass2)
     x.start()
 
@@ -110,7 +110,7 @@ def period3():
         print("Period 3 Already Over!")
     else:
         print("Period 3")
-        webbrowser.open(period3) # Period 3 Zoom Link
+        webbrowser.open(period3Link) # Period 3 Zoom Link
     x = Timer(seconds3, pass3)
     x.start()
 
@@ -134,7 +134,7 @@ def period4():
     if (seconds4 < 0):
         print("Period 4 Already Over!")
     else:
-        webbrowser.open(period4)
+        webbrowser.open(period4Link)
     x = Timer(seconds4, pass4)
     x.start()
 
@@ -158,7 +158,7 @@ def period5():
     if (seconds5 < 0):
         print("Period 5 Already Over!")
     else:
-        webbrowser.open(period5)
+        webbrowser.open(period5Link)
     x = Timer(seconds5, pass5)
     x.start()
 
@@ -176,7 +176,7 @@ def pass5():
 def period6():
     print("Period 6")
     t_x = datetime.today()
-    webbrowser.open(period6) # Passcode Required
+    webbrowser.open(period6Link) # Passcode Required
     endDaySeconds = t_0.replace(day=t_0.day, hour=13, minute=55, second=0, microsecond=0)
     endDaySeconds = endDaySeconds - t_x
     endDaySeconds = endDaySeconds.total_seconds()
@@ -194,7 +194,7 @@ def period7():
         y.start()
     else:
         print("Period 7")
-        webbrowser.open(period7)
+        webbrowser.open(period7Link)
         y = Timer(endDaySeconds, endDay)
         y.start()
 
